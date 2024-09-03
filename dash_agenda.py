@@ -1,27 +1,15 @@
-import pymysql
 import pandas as pd
 import streamlit as st 
 import cria_imagens as ci
 
-connection = pymysql.connect(
-    host='databasedevdb.integrator.host',
-    user='samuel',
-    password='Esl!FoNdZbv7ziDQ',
-    db='tabelas_regulacao',
-    charset='utf8mb4',
-    cursorclass=pymysql.cursors.DictCursor
-)
+conn1 = st.connection('mysql_3', type='sql')
+
 query = '''
 SELECT ta.unidade_saude_solicitante, ta.profissional, ta.procedimento, ta.solicitacoes_pendentes
 FROM tabela_agenda ta
 '''
-try:
-    with connection.cursor() as cursor:
-        cursor.execute(query)
-        results = cursor.fetchall()
-    df= pd.DataFrame(results)
-finally:
-    connection.close()
+
+df = conn1.query(query, ttl=600)
 
 
 # Dashboard usando Streamlit
