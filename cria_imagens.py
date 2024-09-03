@@ -1,6 +1,4 @@
 import altair as alt
-import plotly.graph_objects as go
-import plotly.express as px
 import numpy as np
 import pandas as pd
 alt.renderers.set_embed_options(actions=False)
@@ -56,19 +54,6 @@ def cria_grafico_pizza(dados, valor, legenda, titulo, rad, orient):
     base = base.properties(height=400)
     base = base.configure(background="transparent")  # Corrected the property name
     return base
-
-def cria_grafico_pizza_plotly(dados, valores, titulo, altura):
-    fig = go.Figure(data=[go.Pie(labels=dados, values=valores, textinfo='label+percent', insidetextorientation='radial')])
-    fig.update_layout(
-        title=titulo,
-        height=altura,
-        title_x=0.5,
-        title_y = 0.95,  # Centralizar o título horizontalmente
-        title_xanchor='center',
-        paper_bgcolor='rgba(0,0,0,0)'
-    )
-
-    return fig
 
 def criar_grafico_linhas(data, x, y, titulo, tamanho):
     # Criar o gráfico
@@ -201,25 +186,6 @@ def criar_grafico_varias_linhas(data, x, y, titulo, tamanho, color):
     grafico=grafico.configure(background="transparent")
     return grafico
 
-
-
-import plotly.express as px
-
-def cria_tree_map(dados, paths, valor, altura):
-    fig_2 = px.treemap(dados, path=paths, values=valor, color_discrete_sequence=['#E0F7FA', '#80DEEA', '#26C6DA', '#00ACC1'])
-
-    fig_2.update_layout(
-        height=altura,
-        paper_bgcolor='rgba(0,0,0,0)',
-        treemapcolorway=['#E0F7FA', '#80DEEA', '#26C6DA', '#00ACC1']
-    )
-    fig_2.update_traces(marker=dict(cornerradius=5), hoverinfo='label+value+text')
-    fig_2.update_layout(margin=dict(t=0, l=10, r=10, b=10), font=dict(size=25))
-
-    # Atualização do texttemplate para fazer quebras de linha automáticas
-    fig_2.update_traces(texttemplate="%{label}<br>%{value}")
-
-    return fig_2
 
 import numpy as np
 
