@@ -1,5 +1,5 @@
 import altair as alt
-import plotly.graph_objects as go
+#import plotly.graph_objects as go
 import plotly.express as px
 import numpy as np
 import pandas as pd
@@ -57,16 +57,16 @@ def cria_grafico_pizza(dados, valor, legenda, titulo, rad, orient):
     base = base.configure(background="transparent")  # Corrected the property name
     return base
 
-def cria_grafico_pizza_plotly(dados, valores, titulo, altura):
-    fig = go.Figure(data=[go.Pie(labels=dados, values=valores, textinfo='label+percent', insidetextorientation='radial')])
-    fig.update_layout(
-        title=titulo,
-        height=altura,
-        title_x=0.5,
-        title_y = 0.95,  # Centralizar o título horizontalmente
-        title_xanchor='center',
-        paper_bgcolor='rgba(0,0,0,0)'
-    )
+#def cria_grafico_pizza_plotly(dados, valores, titulo, altura):
+    #fig = go.Figure(data=[go.Pie(labels=dados, values=valores, textinfo='label+percent', insidetextorientation='radial')])
+    #fig.update_layout(
+    #    title=titulo,
+    #    height=altura,
+    #    title_x=0.5,
+    #    title_y = 0.95,  # Centralizar o título horizontalmente
+    #    title_xanchor='center',
+    #   paper_bgcolor='rgba(0,0,0,0)'
+    #)
 
     return fig
 
@@ -201,9 +201,6 @@ def criar_grafico_varias_linhas(data, x, y, titulo, tamanho, color):
     grafico=grafico.configure(background="transparent")
     return grafico
 
-
-
-import plotly.express as px
 
 def cria_tree_map(dados, paths, valor, altura):
     fig_2 = px.treemap(dados, path=paths, values=valor, color_discrete_sequence=['#E0F7FA', '#80DEEA', '#26C6DA', '#00ACC1'])
